@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_USER=realswipemessagetinode_user
+      - POSTGRES_PASSWORD=B2VejqGy3J0FsW5KM8INfLpnTf8SQqRi
+      - POSTGRES_DB=realswipemessagetinode
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - tinode-net
+
+  tinode:
+    image: tinode/tinode:latest
+    depends_on:
+      - db
+    environment:
+      - TINODE_STORE_ENGINE=postgres
+      - TINODE_STORE_DSN=postgresql://realswipemessagetinode_user:B2VejqGy3J0FsW5KM8INfLpnTf8SQqRi@db/realswipemessagetinode?sslmode=disable
+      # adapte sslmode selon ton besoin
+    ports:
+      - "6060:6060"
+    networks:
+      - tinode-net
+
+volumes:
+  db-data:
+
+networks:
+  tinode-net:
