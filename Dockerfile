@@ -1,5 +1,5 @@
 # Utilise l'image officielle Tinode
-FROM tinode/tinode:latest
+FROM tinode/chat:latest
 
 # Copie ta configuration Tinode
 COPY config.json /app/config.json
