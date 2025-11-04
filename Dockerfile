@@ -26,7 +26,7 @@ EXPOSE 6060
 COPY --from=builder /go/bin/server /usr/local/bin/tinode
 
 # Copier votre fichier de configuration (doit être dans le même répertoire que le Dockerfile)
-COPY tinode.conf /etc/tinode.conf
+#COPY tinode.conf /etc/tinode.conf
 
 # Définir la commande de démarrage
 CMD ["tinode", "--config=/etc/tinode.conf"]
