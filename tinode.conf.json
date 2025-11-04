@@ -1,0 +1,49 @@
+# ====================================================================
+# Configuration du Serveur Tinode
+# ====================================================================
+
+[tinode]
+# Le port sur lequel le binaire Tinode écoutera à l'intérieur du conteneur Docker.
+# Render le mappera vers le port public (80/443).
+listen = "0.0.0.0:6060"
+
+# Les paramètres optionnels de base (vous pouvez les ajuster)
+# min_message_length = 1
+# max_message_length = 256000
+
+# [log]
+# level = 3 # Niveau de verbosité des logs (3 est normal)
+# path = "" # Laisser vide pour la sortie standard (stdout/stderr) de Docker
+
+# ====================================================================
+# Configuration de la Base de Données (Store)
+# ====================================================================
+
+[store]
+# Utilisation de l'adaptateur PostgreSQL
+use_adapter = "postgres"
+
+[store.adapter.postgres]
+# --- Détails extraits de votre URL :
+# postgresql://realswipemessagetinode_user:B2VejqGy3J0FsW5KM8INfLpnTf8SQqRi@dpg-d44hoki4d50c73abp04g-a.frankfurt-postgres.render.com/realswipemessagetinode
+
+host = "dpg-d44hoki4d50c73abp04g-a.frankfurt-postgres.render.com"
+database = "realswipemessagetinode"
+user = "realswipemessagetinode_user"
+password = "B2VejqGy3J0FsW5KM8INfLpnTf8SQqRi"
+port = 5432
+
+# Optionnel: Paramètres de pool de connexion pour la performance
+max_open_conns = 64
+max_idle_conns = 16
+
+# ====================================================================
+# Autres Configurations (à compléter plus tard)
+# ====================================================================
+
+# Pour l'intégration des notifications push (APNS pour iOS, FCM pour Android)
+# [push]
+# [push.apns]
+# enabled = false
+# [push.fcm]
+# enabled = false
